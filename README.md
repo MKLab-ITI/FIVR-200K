@@ -3,7 +3,7 @@ An annotated dataset of YouTube videos designed as a benchmark for Fine-grained 
 
 Project Website: [[link](http://ndd.iti.gr/fivr/)]
 
-Paper: [[publisher](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8668422)][[arXiv](https://arxiv.org/abs/1809.04094)][[pdf](https://arxiv.org/pdf/1809.04094.pdf)]
+Paper: [[publisher](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8668422)] [[arXiv](https://arxiv.org/abs/1809.04094)] [[pdf](https://arxiv.org/pdf/1809.04094.pdf)]
 
 ## Installation
 
@@ -50,7 +50,7 @@ If you use this code for your research, please cite our paper.
 ```
 
 ## Related Projects
-**[Intermediate-CNN-Features](https://github.com/MKLab-ITI/intermediate-cnn-features)** **[NDVR-DML](https://github.com/MKLab-ITI/ndvr-dml)**
+**[NDVR-DML](https://github.com/MKLab-ITI/ndvr-dml)** **[Intermediate-CNN-Features](https://github.com/MKLab-ITI/intermediate-cnn-features)**
 
 ## License
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details
