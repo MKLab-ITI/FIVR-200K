@@ -25,6 +25,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from tqdm import tqdm
+from argparse import RawTextHelpFormatter
 from future.utils import viewitems, lrange
 from sklearn.metrics import precision_recall_curve
 
@@ -107,14 +108,32 @@ def evaluate(annotations, results, relevant_labels, dataset, quiet):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-r', '--result_file', required=True)
-    parser.add_argument('-a', '--annotations_file', default='dataset/annotation.json')
-    parser.add_argument('-d', '--dataset_ids', default='dataset/youtube_ids.txt')
-    parser.add_argument('-e', '--export_file', default='mAP_PRcurve_points.csv')
-    parser.add_argument('-rl', '--relevant_labels', default='ND,DS')
-    parser.add_argument('-q', '--quiet', action='store_true')
-    parser.add_argument('-p', '--plot_pr_curve', action='store_true')
+    parser = argparse.ArgumentParser(formatter_class=RawTextHelpFormatter)
+    parser.add_argument('-r', '--result_file',
+                        required=True,
+                        help='File of where the results are stored. It must be in JSON format')
+    parser.add_argument('-rl', '--relevant_labels',
+                        default='ND,DS',
+                        help='Labels of the videos that considered relevant depending on the retrieval task'
+                             '\nDSVR: ND,DS\nCSVR: ND,DS,CS\nISVR: ND,DS,CS,IS')
+    parser.add_argument('-a', '--annotations_file',
+                        default='dataset/annotation.json',
+                        help='File that contains the video annotations of the FIVR-200K dataset')
+    parser.add_argument('-d', '--dataset_ids',
+                        default='dataset/youtube_ids.txt',
+                        help='File that contains the Youtube IDs of the videos in FIVR-200K dataset')
+    parser.add_argument('-e', '--export_file',
+                        default='mAP_PRcurve_points.csv',
+                        help='File where the results will be stored')
+    parser.add_argument('-s', '--save_results',
+                        action='store_true',
+                        help='Flag that indicated whether the results will be stored')
+    parser.add_argument('-q', '--quiet',
+                        action='store_true',
+                        help='Flag that indicated whether the results per query will be printed')
+    parser.add_argument('-p', '--plot_pr_curve',
+                        action='store_true',
+                        help='Flag that indicated whether the PR-curve will be displayed')
     args = parser.parse_args()
 
     # load all the necessary files
@@ -136,7 +155,8 @@ if __name__ == "__main__":
     if args.plot_pr_curve: plot_pr_curve(pr_curve)
 
     # save the numeric values in a csv file
-    with open(args.export_file, 'w') as f:
-        f.write('mAP,{}\n\n'.format(np.mean(mAP)))
-        f.write('Recall,{}\n'.format(','.join(map(str, np.arange(0.0, 1.05, 0.05)))))
-        f.write('Precision,{}'.format(','.join(map(str, pr_curve))))
+    if args.save_results:
+        with open(args.export_file, 'w') as f:
+            f.write('mAP,{}\n\n'.format(np.mean(mAP)))
+            f.write('Recall,{}\n'.format(','.join(map(str, np.arange(0.0, 1.05, 0.05)))))
+            f.write('Precision,{}'.format(','.join(map(str, pr_curve))))

@@ -25,15 +25,32 @@ import argparse
 import numpy as np
 import scipy as sp
 
+from argparse import RawTextHelpFormatter
 from sklearn.metrics import pairwise_distances
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-f', '--feature_file', required=True)
-    parser.add_argument('-r', '--result_file', required=True)
-    parser.add_argument('-a', '--annotations_file', default='dataset/annotation.json')
-    parser.add_argument('-d', '--dataset_ids', default='dataset/youtube_ids.txt')
-    parser.add_argument('-s', '--similarity_metric', default='cosine')
+    parser = argparse.ArgumentParser(formatter_class=RawTextHelpFormatter)
+    parser.add_argument('-f', '--feature_file',
+                        required=True,
+                        help='File that contains the global features vectors of each video in the dataset.\n'
+                             'The order of the feature vectors have to be the same with the videos contained '
+                             'in the file provided to the \'--dataset_ids\' argument.\n'
+                             'Only .npy and .mtx files are supported')
+    parser.add_argument('-r', '--result_file',
+                        required=True,
+                        help='File where the results will be saved.')
+    parser.add_argument('-a', '--annotations_file',
+                        default='dataset/annotation.json',
+                        help='File that contains the video annotations of the FIVR-200K dataset')
+    parser.add_argument('-d', '--dataset_ids',
+                        default='dataset/youtube_ids.txt',
+                        help='File that contains the Youtube IDs of the videos in FIVR-200K dataset')
+    parser.add_argument('-s', '--similarity_metric',
+                        default='cosine',
+                        help='Distance metric that will be used to calculate similarity.\n'
+                             'The supported metrics can be found here:\n'
+                             'https://scikit-learn.org/stable/modules/generated/'
+                             'sklearn.metrics.pairwise_distances.html')
     args = parser.parse_args()
 
     # load global video features from given file

@@ -47,7 +47,8 @@ def download_video(video_id, args):
                 'no_warnings': True
             }
         ydl = youtube_dl.YoutubeDL(ydl_opts)
-        ydl.download(['https://www.youtube.com/watch?v={}'.format(video_id)])
+        video_url = video_id if 'http' not in video_id else 'https://www.youtube.com/watch?v={}'.format(video_id)
+        ydl.download([video_url])
         return True
     except:
         return False
@@ -55,10 +56,18 @@ def download_video(video_id, args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('-v', '--video_dir', required=True)
-    parser.add_argument('-d', '--dataset_ids', default='dataset/youtube_ids.txt')
-    parser.add_argument('-c', '--cores', default=8, type=int)
-    parser.add_argument('-r', '--resolution', default=480, type=int)
+    parser.add_argument('-v', '--video_dir',
+                        required=True,
+                        help='Directory where the downloaded videos will be stored')
+    parser.add_argument('-d', '--dataset_ids',
+                        default='dataset/youtube_ids.txt',
+                        help='File that contains the Youtube IDs of the videos in FIVR-200K dataset')
+    parser.add_argument('-c', '--cores',
+                        default=8, type=int,
+                        help='Number of cores that will be used for downloading.')
+    parser.add_argument('-r', '--resolution',
+                        default=480, type=int,
+                        help='Preferred resolution to download videos.')
     args = parser.parse_args()
 
     # create root dir
@@ -89,4 +98,4 @@ if __name__ == "__main__":
                 if not flag and video not in missing_videos:
                     f.write('{}\n'.format(video))
                     f.flush()
-    print('Completed!')
+    print('Downloading completed!')
