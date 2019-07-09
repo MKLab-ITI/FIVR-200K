@@ -10,7 +10,7 @@ if [[ $METHOD != "custom" ]]; then
     elif [[ $METHOD == "hc" ]]; then
         echo "Selected method: $1"
         echo "Available features: CNN, 3DCNN"
-    elif [[ $METHOD == "hc" ]]; then
+    elif [[ $METHOD == "lbow" ]]; then
         echo "Selected method: $1"
         echo "Available features: VGG, RESNET, INCEPTION, C3D_INT, I3D_INT"
     else
