@@ -26,9 +26,9 @@ conda install --file requirements.txt
 
 ## Dataset format
 
-* The files that contains the dataset can be found in the [dataset](https://github.com/MKLab-ITI/FIVR-200K/tree/master/dataset) folder
+* The files that contains the dataset can be found in [dataset](https://github.com/MKLab-ITI/FIVR-200K/tree/master/dataset) folder
 
-* The video annotations are in the file [annotation.json](https://github.com/MKLab-ITI/FIVR-200K/blob/master/dataset/annotation.json) that has the following format:
+* The video annotations are in file [annotation.json](https://github.com/MKLab-ITI/FIVR-200K/blob/master/dataset/annotation.json) that has the following format:
 ```bash
 {
   "5MBA_7vDhII": {
@@ -49,7 +49,7 @@ conda install --file requirements.txt
 }
 ```
 
-* The events crawled from [Wikipedia](https://en.wikipedia.org/wiki/Portal:Current_events) are in the file [events.json](https://github.com/MKLab-ITI/FIVR-200K/blob/master/dataset/events.json) that has the following format:
+* The events crawled from [Wikipedia](https://en.wikipedia.org/wiki/Portal:Current_events) are in file [events.json](https://github.com/MKLab-ITI/FIVR-200K/blob/master/dataset/events.json) that has the following format:
 ```bash
 [
   {
@@ -72,7 +72,10 @@ conda install --file requirements.txt
 ]
 ```
 
-* The Youtube IDs of the videos in the dataset are in the file [youtube_ids.txt](https://github.com/MKLab-ITI/FIVR-200K/blob/master/dataset/youtube_ids.txt)
+* The Youtube IDs of the videos in the dataset are in file [youtube_ids.txt](https://github.com/MKLab-ITI/FIVR-200K/blob/master/dataset/youtube_ids.txt)
+
+* The global features of the benchmarked approaches in the paper can be found [here](http://ndd.iti.gr/features/)
+    * The ordering is according to the [youtube_ids.txt](https://github.com/MKLab-ITI/FIVR-200K/blob/master/dataset/youtube_ids.txt)
 
 ## Download Videos
 
@@ -90,6 +93,67 @@ python download_dataset.py --video_dir ./videos --dataset_ids dataset/youtube_id
 
 * The videos that are no longer available are stored in a text file with name ```missing_videos.txt```
 
+## Evaluation
+
+1. Generation of the result file 
+    * A file that contains a dictionary with keys the YT ids of the query videos and values another dictionary with keys the YT ids of the dataset videos and values their similarity to the query.
+
+    * Results can be stored in a JSON file with the following format:
+    ```bash
+    {
+      "wrC_Uqk3juY": {
+        "KQh6RCW_nAo": 0.716,
+        "0q82oQa3upE": 0.300,
+          ...},
+      "k_NT43aJ_Jw": {
+        "-KuR8y1gjJQ": 1.0,
+        "Xb19O5Iur44": 0.417,
+          ...},
+      ....
+    }
+    ```
+
+   * See [here](https://github.com/MKLab-ITI/FIVR-200K/blob/master/calculate_similarities.py) for an implementation for the generation of the JSON file
+
+2. Evaluation of the results
+    * Run the following command to run the evaluation:
+    ```bash
+    python evaluation.py --result_file RESULT_FILE --relevant_labels RELEVANT_LABELS
+    ```
+
+    * An example to run the evaluation script:
+    ```bash
+    python evaluation.py --result_file ./results/lbow_vgg.json --relevant_labels ND,DS
+    ```
+    
+3. Evaluation for the three retrieval task
+    * Provide different values to the `relevant_labels` argument to evaluate your results for the three retrieval task
+    ```bash
+    DSVR: ND,DS
+    CSVR: ND,DS,CS
+    ISVR: ND,DS,CS,IS
+    ```
+
+* Reported results
+    * To re-run the experiments of the paper run the following command
+    ```bash
+    bash evaluate_run.sh APPROACH_NAME FEATURES_NAME
+    ```
+
+    * An example to run the evaluation script:
+    ```bash
+    bash evaluate_run.sh BOW VGG
+    ```
+    
+    * The results will probably not be the same as the reported to the paper, because we are constantly fixing mislabeled videos that were missed during the annotation process.
+    
+    * See in the the [Updates](https://github.com/MKLab-ITI/FIVR-200K#updates) section when was the last update of the dataset's annotation
+
+## Updates
+
+In case that you find a mislabeled video please submit it to the following form [here](https://docs.google.com/forms/d/e/1FAIpQLSdHWcPWB4YnAzap7VVJ4wUN_AIf2DIK3H97EjW6VjyHpM4ZSA/viewform?usp=pp_url)
+
+* **Update 29/5**: fix labels for 373 videos
 
 ## Citation
 If you use this code for your research, please cite our paper.
