@@ -9,8 +9,8 @@ Paper: [[publisher](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8668422
 
 * Clone this repo:
 ```bash
-git clone https://github.com/MKLab-ITI/ndvr-dml
-cd ndvr-dml
+git clone https://github.com/MKLab-ITI/FIVR-200K
+cd FIVR-200K
 ```
 * You can install all the dependencies by
 ```bash
