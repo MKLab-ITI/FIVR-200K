@@ -22,7 +22,7 @@ or
 ```bash
 conda install --file requirements.txt
 ```
-* Install [Youtube-dl](https://ytdl-org.github.io/youtube-dl/index.html) (make sure it is up-to-date)
+* Install [youtube-dl](https://ytdl-org.github.io/youtube-dl/index.html) (make sure it is up-to-date)
 
 ## Dataset format
 
@@ -49,7 +49,7 @@ conda install --file requirements.txt
 }
 ```
 
-* The events crawled from [Wikipedia](https://en.wikipedia.org/wiki/Portal:Current_events) are in file [events.json](https://github.com/MKLab-ITI/FIVR-200K/blob/master/dataset/events.json) that has the following format:
+* The events crawled from Wikipedia's [Current Event](https://en.wikipedia.org/wiki/Portal:Current_events) page are in file [events.json](https://github.com/MKLab-ITI/FIVR-200K/blob/master/dataset/events.json) that has the following format:
 ```bash
 [
   {
@@ -113,7 +113,7 @@ python download_dataset.py --video_dir ./videos --dataset_ids dataset/youtube_id
     }
     ```
 
-   * See [here](https://github.com/MKLab-ITI/FIVR-200K/blob/master/calculate_similarities.py) for an implementation for the generation of the JSON file
+   * An implementation for the generation of the JSON file can be found [here](https://github.com/MKLab-ITI/FIVR-200K/blob/1c0c093f29eea6c71f8f154408b2a371b74cb427/calculate_similarities.py#L79)
 
 2. Evaluation of the results
     * Run the following command to run the evaluation:
@@ -126,7 +126,7 @@ python download_dataset.py --video_dir ./videos --dataset_ids dataset/youtube_id
     python evaluation.py --result_file ./results/lbow_vgg.json --relevant_labels ND,DS
     ```
     
-3. Evaluation for the three retrieval task
+3. Evaluation on the three retrieval task
     * Provide different values to the `relevant_labels` argument to evaluate your results for the three retrieval task
     ```bash
     DSVR: ND,DS
