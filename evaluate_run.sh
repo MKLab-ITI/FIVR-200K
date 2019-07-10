@@ -51,10 +51,13 @@ python calculate_similarities.py --feature_file $FEATURE_FILE --result_file $RES
 
 
 printf "\n\nEvaluation on DSVR task\n-----------------------\n"
-python evaluation.py --result_file $RESULT_FILE --relevant_labels ND,DS --export_file ./results/dsvr_results.csv --quiet
+EXPORT_FILE=./results/dsvr_${METHOD}_${FEATURES}.csv
+python evaluation.py --result_file $RESULT_FILE --relevant_labels ND,DS --export_file $EXPORT_FILE --save_results --quiet
 
 printf "\n\nEvaluation on CSVR task\n-----------------------\n"
-python evaluation.py --result_file $RESULT_FILE --relevant_labels ND,DS,CS --export_file ./results/csvr_results.csv --quiet
+EXPORT_FILE=./results/csvr_${METHOD}_${FEATURES}.csv
+python evaluation.py --result_file $RESULT_FILE --relevant_labels ND,DS,CS --export_file $EXPORT_FILE --save_results --quiet
 
 printf "\n\nEvaluation on ISVR task\n-----------------------\n"
-python evaluation.py --result_file $RESULT_FILE --relevant_labels ND,DS,CS,IS --export_file ./results/isvr_results.csv --quiet
+EXPORT_FILE=./results/isvr_${METHOD}_${FEATURES}.csv
+python evaluation.py --result_file $RESULT_FILE --relevant_labels ND,DS,CS,IS --export_file $EXPORT_FILE --save_results --quiet
