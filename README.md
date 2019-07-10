@@ -145,9 +145,9 @@ python download_dataset.py --video_dir ./videos --dataset_ids dataset/youtube_id
     bash evaluate_run.sh BOW VGG
     ```
     
-    * The results will probably not be the same as the reported to the paper, because we are constantly fixing mislabeled videos that were missed during the annotation process.
+    * The results will probably not be the same as the reported one in the paper, because we are constantly fixing mislabeled videos that were missed during the annotation process.
     
-    * See in the the [Updates](https://github.com/MKLab-ITI/FIVR-200K#updates) section when was the last update of the dataset's annotation
+    * See in the [Updates](https://github.com/MKLab-ITI/FIVR-200K#updates) section when was the last update of the dataset's annotation
 
 ## Updates
 
