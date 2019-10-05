@@ -126,6 +126,8 @@ python download_dataset.py --video_dir ./videos --dataset_ids dataset/youtube_id
     python evaluation.py --result_file ./results/lbow_vgg.json --relevant_labels ND,DS
     ```
     
+    * Add flag `--help` to display the detailed description for the arguments of the evaluation script
+    
 3. Evaluation on the three retrieval task
     * Provide different values to the `relevant_labels` argument to evaluate your results for the three retrieval task
     ```bash
@@ -135,7 +137,7 @@ python download_dataset.py --video_dir ./videos --dataset_ids dataset/youtube_id
     ```
 
 * Reported results
-    * To re-run the experiments of the paper run the following command
+    * To re-produce the results of the paper run the following command
     ```bash
     bash evaluate_run.sh APPROACH_NAME FEATURES_NAME
     ```
@@ -156,7 +158,7 @@ In case that you find a mislabeled video please submit it to the following form 
 * **Update 29/5**: fix labels for 373 videos
 
 ## Citation
-If you use this code for your research, please cite our paper.
+If you use FIVR-200K dataset for your research, please cite our paper.
 ```
 @article{kordopatis2019fivr,
   title={FIVR: Fine-grained Incident Video Retrieval},
@@ -172,7 +174,7 @@ If you use this code for your research, please cite our paper.
 ## License
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details
 
-## Contact for further details about the project
+## Contact us for further details
 
 Giorgos Kordopatis-Zilos (georgekordopatis@iti.gr) <br>
 Symeon Papadopoulos (papadop@iti.gr)
