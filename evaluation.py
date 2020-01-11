@@ -79,7 +79,7 @@ def evaluate(annotations, results, relevant_labels, dataset, quiet):
         i, ri, s = 0.0, 0, 0.0
         y_target, y_score = [], []
         for video, sim in sorted(viewitems(results[query]), key=lambda x: x[1], reverse=True):
-            if video in dataset:
+            if video != query and video in dataset:
                 y_score.append(sim)
                 y_target.append(1.0 if video in query_gt else 0.0)
                 ri += 1
