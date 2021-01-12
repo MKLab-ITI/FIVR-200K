@@ -166,7 +166,7 @@ In case that you find a mislabeled video please submit it to the following form 
 If you use FIVR-200K dataset for your research, please cite our paper.
 ```
 @article{kordopatis2019fivr,
-  title={FIVR: Fine-grained Incident Video Retrieval},
+  title={{FIVR}: Fine-grained Incident Video Retrieval},
   author={Kordopatis-Zilos, Giorgos and Papadopoulos, Symeon and Patras, Ioannis and Kompatsiaris, Ioannis},
   journal={IEEE Transactions on Multimedia},
   year={2019}
