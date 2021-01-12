@@ -43,7 +43,10 @@ conda install --file requirements.txt
       ...],    
     "IS": [
       "d_ZNjE7B4Wo",
-      ...]
+      ...],
+    "DA": [
+      "rLvVYdtc73Q",
+      ...],
   },
   ....
 }
@@ -129,12 +132,13 @@ python download_dataset.py --video_dir ./videos --dataset_ids dataset/youtube_id
     * Add flag `--help` to display the detailed description for the arguments of the evaluation script
     
 3. Evaluation on the three retrieval task
-    * Provide different values to the `relevant_labels` argument to evaluate your results for the three retrieval task
+    * Provide different values to the `relevant_labels` argument to evaluate your results for the three visual-based retrieval task
     ```bash
     DSVR: ND,DS
     CSVR: ND,DS,CS
     ISVR: ND,DS,CS,IS
     ```
+    * For the Duplicate Audio Video Retrieval (DAVR) task provide `DA` to the `relevant_labels` argument
 
 * Reported results
     * To re-produce the results of the paper run the following command
@@ -155,7 +159,8 @@ python download_dataset.py --video_dir ./videos --dataset_ids dataset/youtube_id
 
 In case that you find a mislabeled video please submit it to the following form [here](https://docs.google.com/forms/d/e/1FAIpQLSdHWcPWB4YnAzap7VVJ4wUN_AIf2DIK3H97EjW6VjyHpM4ZSA/viewform?usp=pp_url)
 
-* **Update 29/5**: fix labels for 373 videos
+* **Update 21/1/21**: add `DA` label for audio-based annotations of duplicate audio videos
+* **Update 29/5/19**: fix labels for 373 videos
 
 ## Citation
 If you use FIVR-200K dataset for your research, please cite our paper.
@@ -167,9 +172,18 @@ If you use FIVR-200K dataset for your research, please cite our paper.
   year={2019}
 }
 ```
+If you use the audio-based annotations, please also cite the following paper.
+```
+@article{avgoustinakis2020ausil,
+  title={Audio-based Near-Duplicate Video Retrieval with Audio Similarity Learning},
+  author={Avgoustinakis, Pavlos and Kordopatis-Zilos, Giorgos and Papadopoulos, Symeon and Symeonidis, Andreas L and Kompatsiaris, Ioannis},
+  journal={International Conference on Pattern Recognition (ICPR)},
+  year={2020}
+}
+```
 
 ## Related Projects
-**[NDVR-DML](https://github.com/MKLab-ITI/ndvr-dml)** **[Intermediate-CNN-Features](https://github.com/MKLab-ITI/intermediate-cnn-features)**
+**[ViSiL](https://github.com/MKLab-ITI/visil)** **[AuSiL](https://github.com/mever-team/ausil)** **[NDVR-DML](https://github.com/MKLab-ITI/ndvr-dml)** **[Intermediate-CNN-Features](https://github.com/MKLab-ITI/intermediate-cnn-features)**
 
 ## License
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details
