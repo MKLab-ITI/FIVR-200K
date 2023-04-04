@@ -21,7 +21,7 @@ from __future__ import print_function
 
 import os
 import argparse
-import youtube_dl
+import yt_dlp
 import numpy as np
 
 from tqdm import tqdm
@@ -46,7 +46,7 @@ def download_video(video_id, args):
                 'quiet': True,
                 'no_warnings': True
             }
-        ydl = youtube_dl.YoutubeDL(ydl_opts)
+        ydl = yt_dlp.YoutubeDL(ydl_opts)
         video_url = video_id if 'http' not in video_id else 'https://www.youtube.com/watch?v={}'.format(video_id)
         ydl.download([video_url])
         return True
