@@ -22,7 +22,7 @@ or
 ```bash
 conda install --file requirements.txt
 ```
-* Install [youtube-dl](https://ytdl-org.github.io/youtube-dl/index.html) (make sure it is up-to-date)
+* Install [yt-dlp](https://github.com/yt-dlp/yt-dlp) (make sure it is up-to-date)
 
 ## Dataset format
 
