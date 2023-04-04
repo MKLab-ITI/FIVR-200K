@@ -30,7 +30,7 @@ from multiprocessing import Pool
 
 def download_video(video_id, args):
     """
-      Download the provided video using the Youtube-dl library
+      Download the provided video using the yt-dlp library
 
       Args:
         video_id: Youtube ID of the video
