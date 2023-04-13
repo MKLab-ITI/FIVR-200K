@@ -163,8 +163,8 @@ In case that you find a mislabeled video please submit it to the following form 
 * **Update 29/5/19**: fix labels for 373 videos
 
 ## Citation
-If you use FIVR-200K dataset for your research, please cite our paper.
-```
+If you use FIVR-200K dataset for your research, please consider citing our paper:
+```bibtex
 @article{kordopatis2019fivr,
   title={{FIVR}: Fine-grained Incident Video Retrieval},
   author={Kordopatis-Zilos, Giorgos and Papadopoulos, Symeon and Patras, Ioannis and Kompatsiaris, Ioannis},
@@ -172,18 +172,25 @@ If you use FIVR-200K dataset for your research, please cite our paper.
   year={2019}
 }
 ```
-If you use the audio-based annotations, please also cite the following paper.
-```
-@article{avgoustinakis2020ausil,
+If you use the audio-based annotations, please also consider citing our paper:
+```bibtex
+@inproceedings{avgoustinakis2020ausil,
   title={Audio-based Near-Duplicate Video Retrieval with Audio Similarity Learning},
   author={Avgoustinakis, Pavlos and Kordopatis-Zilos, Giorgos and Papadopoulos, Symeon and Symeonidis, Andreas L and Kompatsiaris, Ioannis},
-  journal={International Conference on Pattern Recognition (ICPR)},
+  booktitle={Proceedings of the IEEE International Conference on Pattern Recognition},
   year={2020}
 }
 ```
 
 ## Related Projects
-**[ViSiL](https://github.com/MKLab-ITI/visil)** **[AuSiL](https://github.com/mever-team/ausil)** **[NDVR-DML](https://github.com/MKLab-ITI/ndvr-dml)** **[Intermediate-CNN-Features](https://github.com/MKLab-ITI/intermediate-cnn-features)**
+
+**[Intermediate-CNN-Features](https://github.com/MKLab-ITI/intermediate-cnn-features)** - this repo was used to extract our CNN features
+
+**[NDVR-DML](https://github.com/MKLab-ITI/ndvr-dml)** - one of the methods benchmarked in the FIVR-200K dataset
+
+**[ViSiL](https://github.com/MKLab-ITI/visil)** - video similarity learning for fine-grained similarity calculation
+
+**[AuSiL](https://github.com/mever-team/ausil)** - audio similarity learning for audio-based similarity calculation
 
 ## License
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details
